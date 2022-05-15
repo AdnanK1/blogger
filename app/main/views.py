@@ -29,7 +29,7 @@ def register_page():
 
     return render_template('register.html',form=form)
 
-@main.route('/login')
+@main.route('/login', methods=['GET', 'POST'])
 def login_page():
     form = LoginForm()
     if form.validate_on_submit():
@@ -37,7 +37,7 @@ def login_page():
         if attempted_user and attempted_user.check_password_correction(attempted_password=form.password.data):
             login_user(attempted_user)
             flash(f'You are loggied in as: {attempted_user.username}',category='success')
-            return redirect(url_for('main.home_page'))
+            return redirect(url_for('main.index_page'))
         else:
             flash('Username and password are not matching! Please try again', category='danger')
 
@@ -47,4 +47,4 @@ def login_page():
 def logout_page():
     logout_user()
     flash('You have been logged out!',category= 'info')
-    return redirect(url_for('main.home_page'))
+    return redirect(url_for('main.index_page'))
