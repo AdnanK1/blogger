@@ -24,3 +24,12 @@ class User(db.Model,UserMixin):
     def check_password_correction(self,attempted_password):
         return b_crypt.check_password_hash(self.password_hash,attempted_password)
 
+class Blog(db.Model):
+    __tablename__ = 'Blogs'
+    id = db.Column(db.Integer(),primary_key=True)
+    blog = db.Column(db.String(),nullable=False)
+
+class Comment(db.Model):
+    __tablename__ = 'comments'
+    id = db.Column(db.Integer(), primary_key = True)
+    comment = db.Column(db.String(),nullable=False)

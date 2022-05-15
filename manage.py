@@ -1,5 +1,6 @@
 from app import create_app
 from flask_script import Manager,Server
+from app.models import User,Blog,Comment
 
 #Initialize
 app = create_app('development')
