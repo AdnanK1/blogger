@@ -1,4 +1,4 @@
-from flask import render_template,redirect,url_for
+from flask import render_template,redirect,url_for,flash
 from . import main
 from .forms import RegisterForm,LoginForm
 from ..models import User
@@ -21,6 +21,10 @@ def register_page():
         db.session.add(new_user)
         db.session.commit()
         return redirect(url_for('main.index_page'))
+
+    if form.errors != {}:
+        for err_msg in form.errors.values():
+            flash(f'There was an error with creating a user: {err_msg}', category='danger')
 
     return render_template('register.html',form=form)
 
