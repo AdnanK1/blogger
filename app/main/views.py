@@ -43,6 +43,11 @@ def login_page():
 
     return render_template('login.html', form=form)
 
+@main.route('/blog')
+def blog_page():
+
+    return render_template('blog.html')
+
 @main.route('/logout')
 def logout_page():
     logout_user()

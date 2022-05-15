@@ -12,7 +12,7 @@
             <a class="nav-link">Welcome {{current_user.username}}</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="#">Write a Blog</a>
+              <a class="nav-link" href="{{ url_for('main.blog_page') }}">Write a Blog</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('main.logout_page') }}">Logout</a>

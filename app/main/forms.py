@@ -24,3 +24,8 @@ class LoginForm(FlaskForm):
     username = StringField(label= 'Username:', validators=[DataRequired()])
     password = PasswordField(label= 'Password:', validators=[DataRequired()])
     submit = SubmitField(label='Sign in')
+
+class BlogForm(FlaskForm):
+    name = StringField(label='Comment by:',validators=[Length(min=2, max=25), DataRequired()])
+    comment = TextAreaField(label='Please add your comment',validators=[DataRequired()])
+    submit = SubmitField(label='Submit')
