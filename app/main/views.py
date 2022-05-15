@@ -1,7 +1,7 @@
 from flask import render_template,redirect,url_for,flash
 from . import main
 from .forms import RegisterForm,LoginForm,BlogForm
-from ..models import User
+from ..models import User,Blog
 from ..extensions import db
 from flask_login import login_user,logout_user
 
@@ -43,9 +43,15 @@ def login_page():
 
     return render_template('login.html', form=form)
 
-@main.route('/blog')
+@main.route('/blog', methods=['GET','POST'])
 def blog_page():
     form = BlogForm()
+    if form.validate_on_submit():
+        new_blog = Blog(blog=form.blog.data)
+        db.session.add(new_blog)
+        db.session.commit()
+        return redirect(url_for('main.index_page'))
+
     return render_template('blog.html', form=form)
 
 @main.route('/logout')
