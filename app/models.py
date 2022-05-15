@@ -7,7 +7,7 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 class User(db.Model,UserMixin):
-    __tablename__ = 'user'
+    __tablename__ = 'users'
     id = db.Column(db.Integer(),primary_key = True)
     username = db.Column(db.String(length=30),nullable=False,unique=True)
     email = db.Column(db.String(length=50),nullable=False,unique=True)
@@ -25,7 +25,7 @@ class User(db.Model,UserMixin):
         return b_crypt.check_password_hash(self.password_hash,attempted_password)
 
 class Blog(db.Model):
-    __tablename__ = 'Blogs'
+    __tablename__ = 'blogs'
     id = db.Column(db.Integer(),primary_key=True)
     blog = db.Column(db.String(),nullable=False)
 
