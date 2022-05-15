@@ -1,6 +1,6 @@
 from flask import render_template,redirect,url_for,flash
 from . import main
-from .forms import RegisterForm,LoginForm,BlogForm,c
+from .forms import RegisterForm,LoginForm,BlogForm,CommentForm
 from ..models import User,Blog,Comment
 from ..extensions import db
 from flask_login import login_user,logout_user
@@ -56,7 +56,13 @@ def blog_page():
 
 @main.route('/comment')
 def comment_page():
-    form = C
+    form = CommentForm()
+    if form.validate_on_submit():
+        new_comment = Comment(comment=form.comment.data)
+        db.session.add(new_comment)
+        db.session.commit()
+        return redirect(url_for('main.index_page'))
+    return render_template('comment.html')
 
 @main.route('/logout')
 def logout_page():
