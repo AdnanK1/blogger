@@ -26,5 +26,5 @@ class LoginForm(FlaskForm):
     submit = SubmitField(label='Sign in')
 
 class BlogForm(FlaskForm):
-    comment = TextAreaField(label='Please add your comment',validators=[DataRequired()])
+    blog = TextAreaField(label='Please add your blog',validators=[DataRequired()])
     submit = SubmitField(label='Submit')

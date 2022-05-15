@@ -1,6 +1,6 @@
 from flask import render_template,redirect,url_for,flash
 from . import main
-from .forms import RegisterForm,LoginForm
+from .forms import RegisterForm,LoginForm,BlogForm
 from ..models import User
 from ..extensions import db
 from flask_login import login_user,logout_user
@@ -45,8 +45,8 @@ def login_page():
 
 @main.route('/blog')
 def blog_page():
-
-    return render_template('blog.html')
+    form = BlogForm()
+    return render_template('blog.html', form=form)
 
 @main.route('/logout')
 def logout_page():
