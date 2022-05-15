@@ -1,7 +1,7 @@
 from flask import render_template,redirect,url_for,flash
 from . import main
-from .forms import RegisterForm,LoginForm,BlogForm
-from ..models import User,Blog
+from .forms import RegisterForm,LoginForm,BlogForm,c
+from ..models import User,Blog,Comment
 from ..extensions import db
 from flask_login import login_user,logout_user
 
@@ -53,6 +53,10 @@ def blog_page():
         return redirect(url_for('main.index_page'))
 
     return render_template('blog.html', form=form)
+
+@main.route('/comment')
+def comment_page():
+    form = C
 
 @main.route('/logout')
 def logout_page():
