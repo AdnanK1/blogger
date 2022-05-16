@@ -1,4 +1,4 @@
-#!/mnt/d/moringa/assignment/ip4/virtual/bin/python
+#!/mnt/d/moringa/assignment/ip4/blogger/virtual/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
