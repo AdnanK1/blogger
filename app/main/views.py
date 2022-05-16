@@ -8,8 +8,9 @@ from flask_login import login_user,logout_user
 @main.route('/')
 @main.route('/home')
 def index_page():
+    blogs = Blog.query.all()
 
-    return render_template('index.html')
+    return render_template('index.html',blogs=blogs)
 
 @main.route('/register', methods=['GET', 'POST'])
 def register_page():
@@ -54,7 +55,7 @@ def blog_page():
 
     return render_template('blog.html', form=form)
 
-@main.route('/comment')
+@main.route('/comment',methods=['GET','POST'])
 def comment_page():
     form = CommentForm()
     if form.validate_on_submit():
@@ -62,7 +63,7 @@ def comment_page():
         db.session.add(new_comment)
         db.session.commit()
         return redirect(url_for('main.index_page'))
-    return render_template('comment.html')
+    return render_template('comment.html',form=form)
 
 @main.route('/logout')
 def logout_page():

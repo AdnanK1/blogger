@@ -3,5 +3,17 @@
 Home Page
 {% endblock %}
 {% block content %}
-<h1>Hi</h1>
+
+{% for blog in blogs %}
+<div class="card">
+    <div class="card-header">
+      by: {{ blog.user.username }}
+    </div>
+    <div class="card-body">
+      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      <a href="{{ url_for('main.comment_page') }}" class="btn btn-primary">Comment</a>
+    </div>
+  </div>
+{% endfor %}
+
 {% endblock %}
