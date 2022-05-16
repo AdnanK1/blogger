@@ -6,11 +6,12 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 class User(db.Model,UserMixin):
-    __tablename__ = 'user'
+    __tablename__ = 'users'
     id = db.Column(db.Integer(),primary_key = True)
     username = db.Column(db.String(length=30),nullable=False,unique=True)
     email = db.Column(db.String(length=50),nullable=False,unique=True)
     password_hash = db.Column(db.String(length=60),nullable=False)
+    bloggers = db.relationship('Blog',backref='user')
 
     @property
     def password(self):
@@ -27,6 +28,7 @@ class Blog(db.Model):
     __tablename__ = 'blogs'
     id = db.Column(db.Integer(),primary_key=True)
     blog = db.Column(db.String(),nullable=False)
+    author = db.Column(db.Integer(),db.ForeignKey('users.id'))
 
 class Comment(db.Model):
     __tablename__ = 'comments'
