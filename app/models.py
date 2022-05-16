@@ -12,6 +12,7 @@ class User(db.Model,UserMixin):
     email = db.Column(db.String(length=50),nullable=False,unique=True)
     password_hash = db.Column(db.String(length=60),nullable=False)
     bloggers = db.relationship('Blog',backref='user')
+    commentors = db.relationship('Comment', backref='commentors')
 
     @property
     def password(self):
@@ -34,3 +35,4 @@ class Comment(db.Model):
     __tablename__ = 'comments'
     id = db.Column(db.Integer(), primary_key = True)
     comment = db.Column(db.String(),nullable=False)
+    authors = db.Column(db.Integer(),db.ForeignKey('users.id'))
