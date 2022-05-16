@@ -30,9 +30,12 @@ class Blog(db.Model):
     id = db.Column(db.Integer(),primary_key=True)
     blog = db.Column(db.String(),nullable=False)
     author = db.Column(db.Integer(),db.ForeignKey('users.id'))
+    blogs = db.Column(db.Integer(),db.ForeignKey('comments.id'))
 
 class Comment(db.Model):
     __tablename__ = 'comments'
     id = db.Column(db.Integer(), primary_key = True)
     comment = db.Column(db.String(),nullable=False)
     authors = db.Column(db.Integer(),db.ForeignKey('users.id'))
+    blog_id = db.relationship('Blog',backref='comments')
+    
