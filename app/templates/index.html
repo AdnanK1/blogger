@@ -4,14 +4,16 @@ Home Page
 {% endblock %}
 {% block content %}
 
+<h2 class="h3 mb-3 font-weight-normal">
+    Blogs
+</h2>
 {% for blog in blogs %}
-<div class="card">
-    <div class="card-header">
-      by: {{ blog.user.username }}
-    </div>
-    <div class="card-body">
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="{{ url_for('main.comment_page') }}" class="btn btn-primary">Comment</a>
+<div class="shadow p-3 mb-5 bg-bidy rounded">
+    <div class="card">
+        <div class="card-body">
+            <p class="card-text">{{ blog.blog }}</p>
+            <a href="{{ url_for('main.comment_page') }}" class="btn btn-secondary">Comment</a>
+        </div>
     </div>
   </div>
 {% endfor %}
