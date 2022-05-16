@@ -5,12 +5,12 @@ Login
 {% block content %}
 <div class="login">
     <div class="container">
+        <br>
+        <h1 class="h3 mb-3 font-weight-normal">
+            Login Here
+        </h1>
         <form method="POST" class="form-signin">
             {{ form.hidden_tag() }}
-            <h1 class="h3 mb-3 font-weight-normal">
-                Login Here
-            </h1>
-    
             <br>
             {{ form.username.label() }}
             {{ form.username(class='form-control', placeholder='Username') }}

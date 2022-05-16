@@ -4,14 +4,12 @@ Write your blog
 {% endblock %}
 {% block content %}
 <div class="container">
+    <h1 class="h3 mb-3 font-weight-normal">
+        Blog here
+    </h1>
     <form method="POST" class="form-control">
         {{ form.hidden_tag() }}
         <br>
-        <br>
-        <h1 class="h3 mb-3 font-weight-normal">
-            Blog here
-        </h1>
-        
         <br>
         {{ form.blog.label() }}
         {{ form.blog(class='form-control',placeholder= 'Leave your blog here:') }}

@@ -4,14 +4,15 @@ Comment page
 {% endblock %}
 {% block content %}
 <div class="container">
+    <br>
+    <h1 class="h3 mb-3 font-weight-normal">
+        Comment here
+    </h1>
+
     <form method="POST" class="form-control">
         {{ form.hidden_tag() }}
         <br>
-        <br>
-        <h1 class="h3 mb-3 font-weight-normal">
-            Comment here
-        </h1>
-        <br>
+        
         {{ form.comment.label() }}
         {{ form.comment(class='form-control',placeholder= 'Leave your comment here:') }}
 

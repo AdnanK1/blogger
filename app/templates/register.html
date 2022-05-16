@@ -5,11 +5,12 @@ Register Form
 {% block content %}
 <div class="register">
     <div class="container">
+        <br>
+        <h1 class="h3 mb-3 font-weight-normal">
+            Please Create your account
+        </h1>
         <form method="POST" class="form-register">
             {{ form.hidden_tag() }}
-            <h1 class="h3 mb-3 font-weight-normal">
-                Please Create your account
-            </h1>
             <br>
             {{ form.username.label() }}
             {{ form.username(class='form-control',placeholder= 'Username')}}
