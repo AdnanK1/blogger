@@ -4,12 +4,16 @@ from .forms import RegisterForm,LoginForm,BlogForm,CommentForm
 from ..models import User,Blog,Comment
 from ..extensions import db
 from flask_login import login_user,logout_user
+from ..request import get_quote
 
 @main.route('/')
 @main.route('/home')
 def index_page():
     blogs = Blog.query.all()
-    return render_template('index.html',blogs=blogs)
+    users = User.query.all()
+    comments = Comment.query.all()
+    quotes = get_quote()
+    return render_template('index.html',blogs=blogs,quotes=quotes)
 
 @main.route('/register', methods=['GET', 'POST'])
 def register_page():
