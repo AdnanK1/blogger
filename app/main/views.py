@@ -22,7 +22,7 @@ def register_page():
         new_user = User(username=username,email=email,password=password)
         db.session.add(new_user)
         db.session.commit()
-        return redirect(url_for('main.index_page'))
+        return redirect(url_for('main.login_page'))
 
     if form.errors != {}:
         for err_msg in form.errors.values():

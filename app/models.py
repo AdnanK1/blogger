@@ -39,3 +39,9 @@ class Comment(db.Model):
     authors = db.Column(db.Integer(),db.ForeignKey('users.id'))
     blog_id = db.relationship('Blog',backref='comments')
     
+class RandomQuotes:
+    def __init__(self,author,id,quote,permalink):
+        self.author = author
+        self.id = id
+        self.quote = quote
+        self.permalink = permalink
