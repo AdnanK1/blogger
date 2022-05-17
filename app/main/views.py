@@ -3,15 +3,13 @@ from . import main
 from .forms import RegisterForm,LoginForm,BlogForm,CommentForm
 from ..models import User,Blog,Comment
 from ..extensions import db
-from flask_login import login_user,logout_user
+from flask_login import login_user,logout_user,current_user
 from ..request import get_quote
 
 @main.route('/')
 @main.route('/home')
 def index_page():
     blogs = Blog.query.all()
-    users = User.query.all()
-    comments = Comment.query.all()
     quotes = get_quote()
     return render_template('index.html',blogs=blogs,quotes=quotes)
 
@@ -51,10 +49,10 @@ def login_page():
 def blog_page():
     form = BlogForm()
     if form.validate_on_submit():
-        new_blog = Blog(blog=form.blog.data)
+        new_blog = Blog(blog=form.blog.data,user_id=current_user.id)
         db.session.add(new_blog)
         db.session.commit()
-        return redirect(url_for('main.index_page'))
+        return redirect(url_for('main.index_page', blogs=new_blog))
 
     return render_template('blog.html', form=form)
 

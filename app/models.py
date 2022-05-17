@@ -11,8 +11,8 @@ class User(db.Model,UserMixin):
     username = db.Column(db.String(length=30),nullable=False,unique=True)
     email = db.Column(db.String(length=50),nullable=False,unique=True)
     password_hash = db.Column(db.String(length=60),nullable=False)
-    blog = db.relationship('Blog',backref='user')
-    comment = db.relationship('Comment', backref='commentors')
+    blogs = db.relationship('Blog',backref='user')
+    comment = db.relationship('Comment', backref='user')
 
     @property
     def password(self):
@@ -29,14 +29,14 @@ class Blog(db.Model):
     __tablename__ = 'blogs'
     id = db.Column(db.Integer(),primary_key=True)
     blog = db.Column(db.String(),nullable=False)
-    author = db.Column(db.Integer(),db.ForeignKey('users.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     blogs = db.Column(db.Integer(),db.ForeignKey('comments.id'))
 
 class Comment(db.Model):
     __tablename__ = 'comments'
     id = db.Column(db.Integer(), primary_key = True)
     comment = db.Column(db.String(),nullable=False)
-    authors = db.Column(db.Integer(),db.ForeignKey('users.id'))
+    user_id = db.Column(db.Integer(),db.ForeignKey('users.id'))
     blog_id = db.relationship('Blog',backref='comments')
     
 class Quote:
