@@ -7,6 +7,15 @@ Home Page
 <h2 class="h3 mb-3 font-weight-normal">
     Blogs
 </h2>
+{% for quote in quotes %}
+div class="container">
+    <div class="shadow p-3 mb-5 bg-body rounded">
+        <div class="card-body">
+            <p class="card-text">{{ quotes.author }}</p>
+        </div>
+  </div>
+</div>
+{% endfor %}
 {% if current_user.is_authenticated %}
 {% for blog in blogs %}
 <div class="container">

@@ -9,7 +9,6 @@ from flask_login import login_user,logout_user
 @main.route('/home')
 def index_page():
     blogs = Blog.query.all()
-
     return render_template('index.html',blogs=blogs)
 
 @main.route('/register', methods=['GET', 'POST'])
