@@ -1,0 +1,20 @@
+import unittest
+from app.models import User
+
+class UserModelTest(unittest.TestCase):
+    '''
+    Test class to determine the behaviour of the User class
+    '''
+    def setUp(self):
+        self.new_user = User(password = 'kibe99')
+
+    def test_password_setter(self):
+        self.assertTrue(self.new_user.password_secure is not None)
+
+    def test_no_access_password(self):
+            with self.assertRaises(AttributeError):
+                self.new_user.password
+
+    def test_password_verification(self):
+        self.assertTrue(self.new_user.verify_password('kibe99'))
+
