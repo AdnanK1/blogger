@@ -11,8 +11,8 @@ class User(db.Model,UserMixin):
     username = db.Column(db.String(length=30),nullable=False,unique=True)
     email = db.Column(db.String(length=50),nullable=False,unique=True)
     password_hash = db.Column(db.String(length=60),nullable=False)
-    bloggers = db.relationship('Blog',backref='user')
-    commentors = db.relationship('Comment', backref='commentors')
+    blog = db.relationship('Blog',backref='user')
+    comment = db.relationship('Comment', backref='commentors')
 
     @property
     def password(self):
