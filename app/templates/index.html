@@ -34,7 +34,7 @@ Home Page
   </div>
 </div>
 {% endfor %}
-{% else %}
+{% elseif %}
 {% for blog in blogs %}
 <div class="container">
     <div class="shadow p-3 mb-5 bg-body rounded">
@@ -45,6 +45,14 @@ Home Page
   </div>
 </div>
 {% endfor %}
+{% else %}
+<div class="container">
+    <div class="shadow p-3 mb-5 bg-body rounded">
+        <div class="card-body">
+            <p class='card-text'>There is no blogs to display</p>
+        </div>
+  </div>
+</div>
 {% endif %}
 <h2 class="h3 mb-3 font-weight-normal">
     The comment section
