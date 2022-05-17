@@ -6,7 +6,7 @@ A function that shows random quotations to motivate users is also included.
 The Python programming language was used to develop the application, which was produced using the Visual Studio Code application.
 
 ## Deployment
->This is the link to use to view the application:
+>This is the link to use to view the application: https://ip4-blogger.herokuapp.com/
 
 ## Technologies Used
 The technologies used are:
