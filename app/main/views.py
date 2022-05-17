@@ -80,3 +80,11 @@ def delete(id):
     db.session.commit()
     flash('Blog deleted Successfully',category='success')
     return redirect(url_for('main.index_page'))
+
+@main.route("/delete_comment/<int:id>",methods=['GET','POST'])
+def delete_comment(id):
+    comment = Comment.query.get_or_404(id)
+    db.session.delete(comment)
+    db.session.commit()
+    flash('Comment deleted Successfully',category='success')
+    return redirect(url_for('main.index_page'))
