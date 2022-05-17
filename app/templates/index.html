@@ -46,4 +46,11 @@ Home Page
 </div>
 {% endfor %}
 {% endif %}
+{% for comment in comments %}
+<hr>
+<div class="shadow p-3 mb-5 bg-body rounded">
+    <p class="card-text">The comments section</p>
+    <p class="card-text">{{comment.comment}}</p>
+</div>
+{% endfor  %}
 {% endblock %}

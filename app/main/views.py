@@ -10,8 +10,9 @@ from ..request import get_quote
 @main.route('/home')
 def index_page():
     blogs = Blog.query.all()
+    comments = Comment.query.all()
     quotes = get_quote()
-    return render_template('index.html',blogs=blogs,quotes=quotes)
+    return render_template('index.html',blogs=blogs,quotes=quotes,comments=comments)
 
 @main.route('/register', methods=['GET', 'POST'])
 def register_page():
