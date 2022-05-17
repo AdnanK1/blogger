@@ -1,5 +1,6 @@
 from .extensions import db, b_crypt, login_manager
 from flask_login import UserMixin
+from datetime import datetime
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -31,6 +32,7 @@ class Blog(db.Model):
     blog = db.Column(db.String(),nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     blogs = db.Column(db.Integer(),db.ForeignKey('comments.id'))
+    #posted = db.Column(db.DateTime,default=datetime.utcnow)
 
 class Comment(db.Model):
     __tablename__ = 'comments'

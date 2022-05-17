@@ -71,3 +71,11 @@ def logout_page():
     logout_user()
     flash('You have been logged out!',category= 'info')
     return redirect(url_for('main.index_page'))
+
+@main.route('/delete/<int:id>', methods=['GET','POST'])
+def delete(id):
+    user_to_delete = Blog.query.get_or_404(id)
+    db.session.delete(user_to_delete)
+    db.session.commit()
+    flash('Blog deleted Successfully',category='success')
+    return redirect(url_for('main.index_page'))
